@@ -1,3 +1,30 @@
+## stable-7001
+
+**IMPORTANT:** Starting with this release TCP has support has been removed from the JVB.
+
+Based on stable release 7001.
+
+* 6e0dd04 base: replace frep with tpl
+* 1b51c77 feat: Enables polls for breakout rooms.
+* 0b019ee feat: Enables tenants/subdomains by default.
+* d50df67 fix: Fixes missing variable for prosody plugins.
+* 88997f5 prosody: authentication by matrix user authentication service
+* 7a93978 jvb: remove TCP support
+* c37706c misc: fix label order in  dockerfiles
+* 0de062b misc: add missing quotes to labels in dockerfiles
+* 76424fd chore: add opencontainers labels to Dockerfiles
+* 3b8ed7e misc: working on latest
+
+## stable-6865
+
+Based on stable release 6865.
+
+* 8004ffe Use the new log formatters, clean up stale logging config.
+* a862e84 web: cache versioned static files
+* 48d499a web: configure remote participant video menu
+* 78791ad env.example : ETHERPAD_PUBLIC_URL : incl. /p/ path
+* a504b59 misc: working on latest
+
 ## stable-6826
 
 Based on stable release 6826.

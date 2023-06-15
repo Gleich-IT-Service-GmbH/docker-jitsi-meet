@@ -15,6 +15,8 @@ RUN apt-dpkg-wrap apt-get update && \
     apt-cleanup && \
     rm -rf /tmp/pkg /var/cache/apt
 
+COPY rootfs/usr/share/jitsi-meet /usr/share/jitsi-meet 
+
 EXPOSE 80 443
 
 VOLUME ["/config", "/usr/share/jitsi-meet/transcripts"]

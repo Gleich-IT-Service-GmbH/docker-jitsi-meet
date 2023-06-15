@@ -9,12 +9,17 @@ RUN apt-dpkg-wrap apt-get update && \
       liblua5.2-dev \
       libsasl2-dev \
       libssl-dev \
+      libpq-dev \
       luarocks \
       git \
-      gcc && \
-    luarocks install cyrussasl 1.1.0-1 && \
+      gcc
+
+RUN git config --global url."https://".insteadOf git://
+
+RUN luarocks install cyrussasl 1.1.0-1 && \
     luarocks install net-url 0.9-1 && \
-    luarocks install luajwtjitsi 2.0-0
+    luarocks install luajwtjitsi 2.0-0 && \
+    luarocks install luadbi-postgresql POSTGRES_INCDIR=/usr/include/postgresql POSTGRES_DIR=/usr/lib/postgresql
 
 FROM ${JITSI_REPO}/base:${BASE_TAG}
 
@@ -32,6 +37,8 @@ RUN wget -qO /etc/apt/trusted.gpg.d/prosody.gpg https://prosody.im/files/prosody
       lua-basexx \
       lua-ldap \
       lua-sec \
+      vim \
+      libpq-dev \
       patch && \
     apt-cleanup && \
     rm -rf /etc/prosody && \
@@ -50,4 +57,4 @@ COPY --from=builder /usr/local/share/lua /usr/local/share/lua
 
 EXPOSE 5222 5347 5280
 
-VOLUME ["/config", "/prosody-plugins-custom"]
+VOLUME ["/config", "/prosody-plugins-custom", "/sql"]

@@ -27,6 +27,7 @@ unlimited_jids = {
 
 plugin_paths = { "/prosody-plugins/", "/prosody-plugins-custom" }
 
+
 muc_mapper_domain_base = "{{ .Env.XMPP_DOMAIN }}";
 muc_mapper_domain_prefix = "{{ $XMPP_MUC_DOMAIN_PREFIX }}";
 
@@ -90,6 +91,13 @@ VirtualHost "{{ .Env.XMPP_DOMAIN }}"
     authentication = "cyrus"
     cyrus_application_name = "xmpp"
     allow_unencrypted_plain_auth = true
+
+    -- JWT database
+    default_storage="memory"
+    storage = {
+        
+    }
+
   {{ else if eq $AUTH_TYPE "internal" }}
     authentication = "internal_hashed"
   {{ end }}

@@ -159,7 +159,8 @@ authentication = "internal_hashed"
 --  Logs info and higher to /var/log
 --  Logs errors to syslog also
 log = {
-	{ levels = {min = "{{ $LOG_LEVEL }}"}, to = "console"};
+	{ levels = {min = "{{ $LOG_LEVEL }}"}, to = "console" };
+	{ levels = {min = "debug"}, to = "file", filename = "/var/log/prosody/prosody.log" };
 }
 
 {{ if .Env.GLOBAL_CONFIG }}
